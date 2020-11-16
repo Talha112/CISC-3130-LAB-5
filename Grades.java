@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Grades {                   //A node class for the Array List. I declared everything that contributes
                                         // to the final grade as a field and generated getters and setters for each
     private int test1;
@@ -81,4 +83,23 @@ public class Grades {                   //A node class for the Array List. I dec
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {                        //equals and hashcode methods generated to make it possible
+        if (this == o) return true;                         //to search for specific elements in the Array List
+        if (o == null || getClass() != o.getClass()) return false;
+        Grades grades = (Grades) o;
+        return test1 == grades.test1 &&
+                test2 == grades.test2 &&
+                finalTest == grades.finalTest &&
+                PPSum == grades.PPSum &&
+                labSum == grades.labSum &&
+                sumAll == grades.sumAll &&
+                Objects.equals(firstName, grades.firstName) &&
+                Objects.equals(lastName, grades.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(test1, test2, finalTest, PPSum, labSum, firstName, lastName, sumAll);
+    }
 }
